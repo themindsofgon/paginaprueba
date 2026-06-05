@@ -90,6 +90,7 @@
   cursor: none;
   transition: all 0.15s ease;
   margin-bottom: 36px;
+  margin-top: 48px;
   align-self: flex-start;
 }
 .page-back-btn:hover {
