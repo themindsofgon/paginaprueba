@@ -142,54 +142,49 @@
       <h2 class="page-title">Mis <span>trabajos</span></h2>
       <div class="dark-projects-grid">
 
-        <a class="dark-project-card" href="https://www.behance.net/gallery/245857543/Disenos-Tiendas-Pokemon-TCG" target="_blank" rel="noopener noreferrer">
+        <div class="dark-project-card" data-title="Tiendas Pokémon TCG" data-img="images/pokemon-tcg.png" data-url="https://www.behance.net/gallery/245857543/Disenos-Tiendas-Pokemon-TCG">
           <div class="card-overflow"><img class="card-img" src="images/pokemon-tcg.png" alt="Tiendas Pokémon TCG"></div>
-          <div class="dark-project-info">
-            <h3>Tiendas Pokémon TCG</h3>
-            <a>Ver proyecto →</a>
-          </div>
-        </a>
+          <div class="dark-project-info"><h3>Tiendas Pokémon TCG</h3></div>
+        </div>
 
-        <a class="dark-project-card" href="https://www.behance.net/gallery/250502393/Disenos-de-portadas-musicales" target="_blank" rel="noopener noreferrer">
+        <div class="dark-project-card" data-title="Portadas musicales" data-img="images/matamos.jpg" data-url="https://www.behance.net/gallery/250502393/Disenos-de-portadas-musicales">
           <div class="card-overflow"><img class="card-img" src="images/matamos.jpg" alt="Portadas musicales"></div>
-          <div class="dark-project-info">
-            <h3>Portadas musicales</h3>
-            <a>Ver proyecto →</a>
-          </div>
-        </a>
+          <div class="dark-project-info"><h3>Portadas musicales</h3></div>
+        </div>
 
-        <a class="dark-project-card" href="https://www.behance.net/gallery/156935775/Rels-B-Pa-quererte" target="_blank" rel="noopener noreferrer">
+        <div class="dark-project-card" data-title="Pa Quererte" data-img="images/proyecto1.jpg" data-url="https://www.behance.net/gallery/156935775/Rels-B-Pa-quererte">
           <div class="card-overflow"><img class="card-img" src="images/proyecto1.jpg" alt="Pa Quererte"></div>
-          <div class="dark-project-info">
-            <h3>Pa Quererte</h3>
-            <a>Ver proyecto →</a>
-          </div>
-        </a>
+          <div class="dark-project-info"><h3>Pa Quererte</h3></div>
+        </div>
 
-        <a class="dark-project-card" href="https://www.instagram.com/p/CkDTo5rsTaH/?hl=es" target="_blank" rel="noopener noreferrer">
+        <div class="dark-project-card" data-title="Nobody Like Yo" data-img="images/nicki.jpg" data-url="https://www.instagram.com/p/CkDTo5rsTaH/?hl=es">
           <div class="card-overflow"><img class="card-img" src="images/nicki.jpg" alt="Nobody Like Yo"></div>
-          <div class="dark-project-info">
-            <h3>Nobody Like Yo</h3>
-            <a>Ver proyecto →</a>
-          </div>
-        </a>
+          <div class="dark-project-info"><h3>Nobody Like Yo</h3></div>
+        </div>
 
-        <a class="dark-project-card" href="https://www.behance.net/gallery/157233339/La-Hoja-Dorada" target="_blank" rel="noopener noreferrer">
+        <div class="dark-project-card" data-title="La Hoja Dorada" data-img="images/lahojadorada.jpg" data-url="https://www.behance.net/gallery/157233339/La-Hoja-Dorada">
           <div class="card-overflow"><img class="card-img" src="images/lahojadorada.jpg" alt="La Hoja Dorada"></div>
-          <div class="dark-project-info">
-            <h3>La Hoja Dorada</h3>
-            <a>Ver proyecto →</a>
-          </div>
-        </a>
+          <div class="dark-project-info"><h3>La Hoja Dorada</h3></div>
+        </div>
 
-        <a class="dark-project-card" href="https://www.behance.net/gallery/212869167/Laberinto-Vino" target="_blank" rel="noopener noreferrer">
+        <div class="dark-project-card" data-title="Laberinto Vino" data-img="images/laberinto-vino.jpg" data-url="https://www.behance.net/gallery/212869167/Laberinto-Vino">
           <div class="card-overflow"><img class="card-img" src="images/laberinto-vino.jpg" alt="Laberinto Vino"></div>
-          <div class="dark-project-info">
-            <h3>Laberinto Vino</h3>
-            <a>Ver proyecto →</a>
-          </div>
-        </a>
+          <div class="dark-project-info"><h3>Laberinto Vino</h3></div>
+        </div>
 
+      </div>
+
+      <!-- Modal de proyecto -->
+      <div id="project-modal">
+        <div id="modal-backdrop"></div>
+        <div id="modal-box">
+          <button id="modal-close">✕</button>
+          <img id="modal-img" src="" alt="">
+          <div id="modal-footer">
+            <h3 id="modal-title"></h3>
+            <a id="modal-btn" href="#" target="_blank" rel="noopener noreferrer">Ver en Behance →</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -553,6 +548,7 @@
   <script src="script.js"></script>
   <script src="js/rpg-landing.js"></script>
   <script src="js/brains-bounce.js"></script>
+  <script src="js/project-modal.js"></script>
   <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
