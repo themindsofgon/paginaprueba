@@ -63,18 +63,25 @@ function animate(now) {
   const targetGlow = isHovering ? 1 : 0;
   glowAmount += (targetGlow - glowAmount) * 0.1;
 
-  const breathW = 26 * hoverScale + Math.sin(t * 1.3) * 0.8;
-  const breathH = 18 * hoverScale + Math.cos(t * 1.7) * 0.5;
-  cursor.style.width  = breathW + 'px';
-  cursor.style.height = breathH + 'px';
-
-  const glowPulse = isHovering ? 14 + Math.sin(now * 0.006) * 6 : 0;
-  const glow = glowAmount * glowPulse;
+  const baseSize = 36;
+  const breathSize = baseSize * hoverScale + Math.sin(t * 1.3) * 1.5;
+  cursor.style.width  = breathSize + 'px';
+  cursor.style.height = breathSize + 'px';
   cursor.style.transform = `translate(-50%, -50%)`;
-  cursor.style.filter = glow > 0.1
-    ? `drop-shadow(0 0 ${glow}px rgba(209,40,106,1)) drop-shadow(0 0 ${glow * 2}px rgba(209,40,106,0.7)) drop-shadow(0 0 ${glow * 3}px rgba(209,40,106,0.3))`
-    : 'none';
 
+  const glowPulse = isHovering ? 1 + Math.sin(now * 0.006) * 0.4 : 1;
+  const intensity = isHovering ? glowAmount : 0.7;
+  const g1 = Math.round(6  * glowPulse * intensity);
+  const g2 = Math.round(14 * glowPulse * intensity);
+  const g3 = Math.round(28 * glowPulse * intensity);
+  cursor.style.boxShadow = `
+    0 0 ${g1}px  2px rgba(255,200,0,${0.7 * glowPulse}),
+    0 0 ${g2}px  4px rgba(255,160,0,${0.4 * glowPulse}),
+    0 0 ${g3}px  6px rgba(255,120,0,${0.2 * glowPulse}),
+    inset 0 0 8px 2px rgba(255,220,80,0.15)
+  `;
+
+  cursor.style.filter = '';
   velX *= 0.75;
   velY *= 0.75;
 

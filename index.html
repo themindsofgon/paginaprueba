@@ -13,15 +13,17 @@
     <link rel="stylesheet" href="css/hamburguesaestilos.css">
     <link rel="stylesheet" href="css/resolucionindex.css">
     <link rel="stylesheet" href="css/contacto.css">
-<link rel="stylesheet" href="css/resolucionfooter.css">
+    <link rel="stylesheet" href="css/resolucionfooter.css">
     <link rel="stylesheet" href="style.css"/>
-     <link rel="stylesheet" href="css/portfolio.css?v=5"/>
+    <link rel="stylesheet" href="css/portfolio.css?v=5"/>
+    <link rel="stylesheet" href="css/rpg-landing.css"/>
+    <link rel="stylesheet" href="css/rpg-pages.css"/>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="css/fondo-nubes.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Raleway:wght@400;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Pacifico&family=Nunito:wght@400;700;800;900&family=Raleway:wght@400;700;800;900&display=swap" rel="stylesheet">
   <title>TheMindsOfGon</title>
   <link rel="icon" type="image/png" href="images/flavicon/faviconlogo.png">
 
@@ -35,173 +37,486 @@
   <meta property="og:image:height" content="512">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:image" content="https://themindsofgon.github.io/images/flavicon/faviconlogo.png">
-
 </head>
 
 <body>
 
-    <div id="cursor"></div>
-  
-       <!-- SECCTION NAVBAR-->
-       <header>
-        <nav class="nav container__menu"">
-            <div class="logo">
-                <a href="index.html"><img src="images/logo.png"></a>
-            </div>
-            <div class="menu">
-                <i class="fas fa-bars" id="btn_menu"></i>
-                <div id="back_menu"></div>
-                <nav id="nav">
-                    <ul>
-                        <li><a href="#proyectos">Mis Proyectos</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
-                        <li><a href="https://www.instagram.com/themindsofgon/" target="_blank">
-                            <i class="fa-brands fa-instagram"></i></a></li>
-                    </ul>
-                </nav>
-            </div>
-        </nav>
-    </header>
+  <div id="cursor"></div>
 
+  <!-- ========== RPG LANDING SCREEN ========== -->
+  <div id="rpg-landing">
 
-    <!-- SECCTION PRESENTACION -->
-
-   <header class="cabecera" data-aos="fade-up" data-aos-delay="400">
-  <h2 class="texto">De mis mentes <br><span>para ti.</span></h2>
-  <a class="btn-trabajar" 
-     href="https://docs.google.com/forms/d/e/1FAIpQLSc-epUMO3jboOy9vldnsQbRiyoDzdfkUXl-eQV1eD9g0gM0wQ/viewform" 
-     target="_blank" 
-     rel="noopener noreferrer"
-     data-aos="fade-up" data-aos-delay="700">
-    <span>¿Trabajamos juntos?</span>
-  </a>
-</header>
-
-
-    <!-- SECCION PORTAFOLIO -->
-<section id="proyectos">
-  <h2 class="proyectos-titulo" data-aos="fade-down">Mis <span>Proyectos</span></h2>
-
-  <div class="proyectos-grid">
-
-    <div class="proyecto-card proyecto-grande" data-aos="fade-up" data-aos-delay="100">
-      <a class="proyecto-link" href="https://www.behance.net/gallery/245857543/Disenos-Tiendas-Pokemon-TCG" target="_blank" rel="noopener noreferrer" aria-label="Diseños Tiendas Pokémon TCG"></a>
-      <div class="proyecto-img">
-        <img src="images/pokemon-tcg.png" alt="Diseños Tiendas Pokémon TCG">
-        <div class="proyecto-overlay">
-          <div class="overlay-content">
-            <h3>Tiendas Pokémon TCG</h3>
-            <a href="https://www.behance.net/gallery/245857543/Disenos-Tiendas-Pokemon-TCG" target="_blank">Ver proyecto →</a>
-          </div>
-        </div>
-      </div>
+    <!-- Efectos de energía / rayos CSS -->
+    <div id="rpg-energy">
+      <span class="bolt b1"></span>
+      <span class="bolt b2"></span>
+      <span class="bolt b3"></span>
+      <span class="bolt b4"></span>
+      <span class="bolt b5"></span>
+      <span class="bolt b6"></span>
+      <span class="bolt b7"></span>
     </div>
 
-    <div class="proyecto-card proyecto-tall" data-aos="fade-up" data-aos-delay="200">
-      <a class="proyecto-link" href="https://www.behance.net/gallery/250502393/Disenos-de-portadas-musicales" target="_blank" rel="noopener noreferrer" aria-label="Diseños de portadas musicales"></a>
-      <div class="proyecto-img">
-        <img src="images/matamos.jpg" alt="Diseños de portadas musicales">
-        <div class="proyecto-overlay">
-          <div class="overlay-content">
-            <h3>Portadas musicales</h3>
-            <a href="https://www.behance.net/gallery/250502393/Disenos-de-portadas-musicales" target="_blank">Ver proyecto →</a>
-          </div>
-        </div>
+    <!-- Cerebros rebotando estilo DVD -->
+    <div id="brains-layer"></div>
+
+
+
+    <!-- Panel izquierdo: título + menú -->
+    <div id="rpg-left">
+      <div id="rpg-title">
+        <h1>TheMindsOfGon</h1>
+        <p>De mis mentes para ti.</p>
       </div>
+
+      <nav id="rpg-menu">
+        <a href="#" class="rpg-item" data-target="sobre-mi">
+          <span class="rpg-arrow">◆</span>
+          <span class="rpg-label">Sobre mí</span>
+        </a>
+        <a href="#" class="rpg-item" data-target="proyectos">
+          <span class="rpg-arrow">◆</span>
+          <span class="rpg-label">Mis trabajos</span>
+        </a>
+        <a href="#" class="rpg-item" data-target="contacto">
+          <span class="rpg-arrow">◆</span>
+          <span class="rpg-label">Mis redes</span>
+        </a>
+      </nav>
+
     </div>
 
-    <div class="proyecto-card" data-aos="fade-up" data-aos-delay="300">
-      <a class="proyecto-link" href="https://www.behance.net/gallery/156935775/Rels-B-Pa-quererte" target="_blank" rel="noopener noreferrer" aria-label="Pa Quererte"></a>
-      <div class="proyecto-img">
-        <img src="images/proyecto1.jpg" alt="Pa Quererte">
-        <div class="proyecto-overlay">
-          <div class="overlay-content">
-            <h3>Pa Quererte</h3>
-            <a href="https://www.behance.net/gallery/156935775/Rels-B-Pa-quererte" target="_blank">Ver proyecto →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="proyecto-card" data-aos="fade-up" data-aos-delay="400">
-      <a class="proyecto-link" href="https://www.instagram.com/p/CkDTo5rsTaH/?hl=es" target="_blank" rel="noopener noreferrer" aria-label="Nobody Like Yo"></a>
-      <div class="proyecto-img">
-        <img src="images/nicki.jpg" alt="Nobody Like Yo">
-        <div class="proyecto-overlay">
-          <div class="overlay-content">
-            <h3>Nobody Like Yo</h3>
-            <a href="https://www.instagram.com/p/CkDTo5rsTaH/?hl=es" target="_blank">Ver proyecto →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="proyecto-card" data-aos="fade-up" data-aos-delay="100">
-      <a class="proyecto-link" href="https://www.behance.net/gallery/157233339/La-Hoja-Dorada" target="_blank" rel="noopener noreferrer" aria-label="La Hoja Dorada"></a>
-      <div class="proyecto-img">
-        <img src="images/lahojadorada.jpg" alt="La Hoja Dorada">
-        <div class="proyecto-overlay">
-          <div class="overlay-content">
-            <h3>La Hoja Dorada</h3>
-            <a href="https://www.behance.net/gallery/157233339/La-Hoja-Dorada" target="_blank">Ver proyecto →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="proyecto-card" data-aos="fade-up" data-aos-delay="200">
-      <a class="proyecto-link" href="https://www.behance.net/gallery/212869167/Laberinto-Vino" target="_blank" rel="noopener noreferrer" aria-label="Laberinto Vino"></a>
-      <div class="proyecto-img">
-        <img src="images/laberinto-vino.jpg" alt="Laberinto Vino">
-        <div class="proyecto-overlay">
-          <div class="overlay-content">
-            <h3>Laberinto Vino</h3>
-            <a href="https://www.behance.net/gallery/212869167/Laberinto-Vino" target="_blank">Ver proyecto →</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- Texto esquina inferior derecha — estilo Void Star -->
+    <p id="rpg-tagline-br">De mis mentes para ti.</p>
 
   </div>
-</section>
 
+  <!-- Flash de transición -->
+  <div id="rpg-flash"></div>
 
-
-
-
-
-    <!-- SECCTION CONTACTO -->
-<section id="contacto">
-  <div class="contacto-inner">
-
-    <div class="contacto-left" id="contacto-left" data-aos="fade-right" data-aos-delay="300">
-      <div class="slide activo"></div>
-      <div class="slide"></div>
+  <!-- ========== PÁGINA: SOBRE MÍ ========== -->
+  <div class="rpg-page" id="page-sobre-mi">
+    <div class="page-energy">
+      <span class="bolt b1"></span><span class="bolt b2"></span>
+      <span class="bolt b3"></span><span class="bolt b4"></span>
+      <span class="bolt b5"></span>
     </div>
+    <div class="rpg-corner rpg-corner-tl"></div>
+    <div class="rpg-corner rpg-corner-tr"></div>
+    <div class="rpg-corner rpg-corner-bl"></div>
+    <div class="rpg-corner rpg-corner-br"></div>
+    <div class="page-inner">
+      <a href="#" class="page-back-btn" data-page="page-sobre-mi">◀ Menú</a>
+      <h2 class="page-title">Sobre <span>mí</span></h2>
+      <div class="sobre-layout">
+        <div class="sobre-img-dark">
+          <img src="images/logobiografia.png" alt="TheMindsOfGon">
+        </div>
+        <div class="sobre-text-dark">
+          <p class="dark-sub">Diseñador gráfico</p>
+          <p class="body-text">Soy Gonzalo García, diseñador gráfico con más de ocho años creando contenido para empresas e influencers. Especializado en identidad visual, portadas musicales y contenido para redes sociales. Si tienes una idea, yo la hago realidad.</p>
+          <div class="dark-stats">
+            <div class="dark-stat">
+              <strong>8<span>+</span></strong>
+              <small>Años de experiencia</small>
+            </div>
+            <div class="dark-stat">
+              <strong>100<span>+</span></strong>
+              <small>Proyectos realizados</small>
+            </div>
+          </div>
+          <a class="dark-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSc-epUMO3jboOy9vldnsQbRiyoDzdfkUXl-eQV1eD9g0gM0wQ/viewform" target="_blank" rel="noopener noreferrer">¿Trabajamos juntos?</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <div class="contacto-right">
-      <p class="contacto-sub" data-aos="fade-up" data-aos-delay="300">¿Tienes un proyecto en mente?</p>
-      <h2 data-aos="fade-up" data-aos-delay="400">Hablemos <span>.</span></h2>
-      <p class="contacto-desc" data-aos="fade-up" data-aos-delay="500">Soy Gonzalo García, diseñador gráfico con más de ocho años creando contenido para empresas e influencers. Si tienes una idea, yo la hago realidad.</p>
+  <!-- ========== PÁGINA: MIS TRABAJOS ========== -->
+  <div class="rpg-page" id="page-proyectos">
+    <div class="page-energy">
+      <span class="bolt b2"></span><span class="bolt b3"></span>
+      <span class="bolt b5"></span><span class="bolt b6"></span>
+    </div>
+    <div class="rpg-corner rpg-corner-tl"></div>
+    <div class="rpg-corner rpg-corner-tr"></div>
+    <div class="rpg-corner rpg-corner-bl"></div>
+    <div class="rpg-corner rpg-corner-br"></div>
+    <div class="page-inner">
+      <a href="#" class="page-back-btn" data-page="page-proyectos">◀ Menú</a>
+      <h2 class="page-title">Mis <span>trabajos</span></h2>
+      <div class="dark-projects-grid">
 
-      <a class="contacto-email" data-aos="fade-up" data-aos-delay="600" href="mailto:themindsofgon@gmail.com">
-        <span>themindsofgon@gmail.com</span>
-      </a>
+        <a class="dark-project-card" href="https://www.behance.net/gallery/245857543/Disenos-Tiendas-Pokemon-TCG" target="_blank" rel="noopener noreferrer">
+          <div class="card-overflow"><img class="card-img" src="images/pokemon-tcg.png" alt="Tiendas Pokémon TCG"></div>
+          <div class="dark-project-info">
+            <h3>Tiendas Pokémon TCG</h3>
+            <a>Ver proyecto →</a>
+          </div>
+        </a>
 
-      <div class="contacto-redes" data-aos="fade-up" data-aos-delay="700">
+        <a class="dark-project-card" href="https://www.behance.net/gallery/250502393/Disenos-de-portadas-musicales" target="_blank" rel="noopener noreferrer">
+          <div class="card-overflow"><img class="card-img" src="images/matamos.jpg" alt="Portadas musicales"></div>
+          <div class="dark-project-info">
+            <h3>Portadas musicales</h3>
+            <a>Ver proyecto →</a>
+          </div>
+        </a>
+
+        <a class="dark-project-card" href="https://www.behance.net/gallery/156935775/Rels-B-Pa-quererte" target="_blank" rel="noopener noreferrer">
+          <div class="card-overflow"><img class="card-img" src="images/proyecto1.jpg" alt="Pa Quererte"></div>
+          <div class="dark-project-info">
+            <h3>Pa Quererte</h3>
+            <a>Ver proyecto →</a>
+          </div>
+        </a>
+
+        <a class="dark-project-card" href="https://www.instagram.com/p/CkDTo5rsTaH/?hl=es" target="_blank" rel="noopener noreferrer">
+          <div class="card-overflow"><img class="card-img" src="images/nicki.jpg" alt="Nobody Like Yo"></div>
+          <div class="dark-project-info">
+            <h3>Nobody Like Yo</h3>
+            <a>Ver proyecto →</a>
+          </div>
+        </a>
+
+        <a class="dark-project-card" href="https://www.behance.net/gallery/157233339/La-Hoja-Dorada" target="_blank" rel="noopener noreferrer">
+          <div class="card-overflow"><img class="card-img" src="images/lahojadorada.jpg" alt="La Hoja Dorada"></div>
+          <div class="dark-project-info">
+            <h3>La Hoja Dorada</h3>
+            <a>Ver proyecto →</a>
+          </div>
+        </a>
+
+        <a class="dark-project-card" href="https://www.behance.net/gallery/212869167/Laberinto-Vino" target="_blank" rel="noopener noreferrer">
+          <div class="card-overflow"><img class="card-img" src="images/laberinto-vino.jpg" alt="Laberinto Vino"></div>
+          <div class="dark-project-info">
+            <h3>Laberinto Vino</h3>
+            <a>Ver proyecto →</a>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PÁGINA: MIS REDES ========== -->
+  <div class="rpg-page" id="page-redes">
+    <div class="page-energy">
+      <span class="bolt b1"></span><span class="bolt b3"></span>
+      <span class="bolt b4"></span><span class="bolt b7"></span>
+    </div>
+    <div class="rpg-corner rpg-corner-tl"></div>
+    <div class="rpg-corner rpg-corner-tr"></div>
+    <div class="rpg-corner rpg-corner-bl"></div>
+    <div class="rpg-corner rpg-corner-br"></div>
+    <div class="page-inner">
+      <a href="#" class="page-back-btn" data-page="page-redes">◀ Menú</a>
+      <h2 class="page-title">Mis <span>redes</span></h2>
+      <div class="redes-layout">
+        <div class="redes-left">
+          <p class="redes-sub">¿Tienes un proyecto en mente?</p>
+          <p class="redes-desc">Soy Gonzalo García, diseñador gráfico con más de ocho años creando contenido para empresas e influencers. Si tienes una idea, yo la hago realidad.</p>
+          <a class="redes-email" href="mailto:themindsofgon@gmail.com">themindsofgon@gmail.com</a>
+          <div class="redes-social">
+            <a href="https://www.behance.net/themindsofgon" target="_blank" aria-label="Behance">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988H0V5.021h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.221 8.061zM3 11h3.584c2.508 0 2.906-3-.312-3H3v3zm3.391 3H3v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/themindsofgon" target="_blank" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/themindsofgon" target="_blank" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="4"/><line x1="8" y1="11" x2="8" y2="17"/><line x1="8" y1="7" x2="8" y2="8"/><path d="M12 17v-4a2 2 0 0 1 4 0v4"/><line x1="12" y1="11" x2="12" y2="17"/></svg>
+            </a>
+          </div>
+          <div>
+            <a class="dark-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSc-epUMO3jboOy9vldnsQbRiyoDzdfkUXl-eQV1eD9g0gM0wQ/viewform" target="_blank" rel="noopener noreferrer">¿Trabajamos juntos?</a>
+          </div>
+        </div>
+        <div class="redes-right">
+          <img src="images/logobiografia.png" alt="TheMindsOfGon">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========== NAVBAR ========== -->
+  <header id="main-nav">
+    <nav class="nav container__menu">
+      <div class="logo">
+        <a href="index.html"><img src="images/logo.png"></a>
+      </div>
+      <div class="menu">
+        <i class="fas fa-bars" id="btn_menu"></i>
+        <div id="back_menu"></div>
+        <nav id="nav">
+          <ul>
+            <li><a href="#sobre-mi">Sobre mí</a></li>
+            <li><a href="#proyectos">Mis Proyectos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="https://www.instagram.com/themindsofgon/" target="_blank">
+              <i class="fa-brands fa-instagram"></i></a></li>
+          </ul>
+        </nav>
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- ========== SECCIÓN SOBRE MÍ ========== -->
+  <section id="sobre-mi">
+    <div class="sobre-mi-inner">
+
+      <div class="sobre-mi-img-wrap" data-aos="fade-right" data-aos-delay="200">
+        <img src="images/logobiografia.png" alt="TheMindsOfGon — Gonzalo García">
+      </div>
+
+      <div class="sobre-mi-text" data-aos="fade-left" data-aos-delay="300">
+        <p class="sobre-mi-sub">Diseñador gráfico</p>
+        <h2>Sobre <span>mí</span></h2>
+        <p class="sobre-mi-desc">
+          Soy Gonzalo García, diseñador gráfico con más de ocho años creando contenido
+          para empresas e influencers. Especializado en identidad visual, portadas musicales
+          y contenido para redes sociales. Si tienes una idea, yo la hago realidad.
+        </p>
+
+        <div class="sobre-mi-stats">
+          <div class="sobre-mi-stat">
+            <strong>8<span>+</span></strong>
+            <small>Años de experiencia</small>
+          </div>
+          <div class="sobre-mi-stat">
+            <strong>100<span>+</span></strong>
+            <small>Proyectos realizados</small>
+          </div>
+        </div>
+
+        <a class="btn-trabajar"
+           href="https://docs.google.com/forms/d/e/1FAIpQLSc-epUMO3jboOy9vldnsQbRiyoDzdfkUXl-eQV1eD9g0gM0wQ/viewform"
+           target="_blank"
+           rel="noopener noreferrer"
+           data-aos="fade-up" data-aos-delay="500">
+          <span>¿Trabajamos juntos?</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========== SECCIÓN PORTAFOLIO ========== -->
+  <section id="proyectos">
+    <h2 class="proyectos-titulo" data-aos="fade-down">Mis <span>Proyectos</span></h2>
+
+    <div class="proyectos-grid">
+
+      <div class="proyecto-card proyecto-grande" data-aos="fade-up" data-aos-delay="100">
+        <a class="proyecto-link" href="https://www.behance.net/gallery/245857543/Disenos-Tiendas-Pokemon-TCG" target="_blank" rel="noopener noreferrer" aria-label="Diseños Tiendas Pokémon TCG"></a>
+        <div class="proyecto-img">
+          <img src="images/pokemon-tcg.png" alt="Diseños Tiendas Pokémon TCG">
+          <div class="proyecto-overlay">
+            <div class="overlay-content">
+              <h3>Tiendas Pokémon TCG</h3>
+              <a href="https://www.behance.net/gallery/245857543/Disenos-Tiendas-Pokemon-TCG" target="_blank">Ver proyecto →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proyecto-card proyecto-tall" data-aos="fade-up" data-aos-delay="200">
+        <a class="proyecto-link" href="https://www.behance.net/gallery/250502393/Disenos-de-portadas-musicales" target="_blank" rel="noopener noreferrer" aria-label="Diseños de portadas musicales"></a>
+        <div class="proyecto-img">
+          <img src="images/matamos.jpg" alt="Diseños de portadas musicales">
+          <div class="proyecto-overlay">
+            <div class="overlay-content">
+              <h3>Portadas musicales</h3>
+              <a href="https://www.behance.net/gallery/250502393/Disenos-de-portadas-musicales" target="_blank">Ver proyecto →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proyecto-card" data-aos="fade-up" data-aos-delay="300">
+        <a class="proyecto-link" href="https://www.behance.net/gallery/156935775/Rels-B-Pa-quererte" target="_blank" rel="noopener noreferrer" aria-label="Pa Quererte"></a>
+        <div class="proyecto-img">
+          <img src="images/proyecto1.jpg" alt="Pa Quererte">
+          <div class="proyecto-overlay">
+            <div class="overlay-content">
+              <h3>Pa Quererte</h3>
+              <a href="https://www.behance.net/gallery/156935775/Rels-B-Pa-quererte" target="_blank">Ver proyecto →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proyecto-card" data-aos="fade-up" data-aos-delay="400">
+        <a class="proyecto-link" href="https://www.instagram.com/p/CkDTo5rsTaH/?hl=es" target="_blank" rel="noopener noreferrer" aria-label="Nobody Like Yo"></a>
+        <div class="proyecto-img">
+          <img src="images/nicki.jpg" alt="Nobody Like Yo">
+          <div class="proyecto-overlay">
+            <div class="overlay-content">
+              <h3>Nobody Like Yo</h3>
+              <a href="https://www.instagram.com/p/CkDTo5rsTaH/?hl=es" target="_blank">Ver proyecto →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proyecto-card" data-aos="fade-up" data-aos-delay="100">
+        <a class="proyecto-link" href="https://www.behance.net/gallery/157233339/La-Hoja-Dorada" target="_blank" rel="noopener noreferrer" aria-label="La Hoja Dorada"></a>
+        <div class="proyecto-img">
+          <img src="images/lahojadorada.jpg" alt="La Hoja Dorada">
+          <div class="proyecto-overlay">
+            <div class="overlay-content">
+              <h3>La Hoja Dorada</h3>
+              <a href="https://www.behance.net/gallery/157233339/La-Hoja-Dorada" target="_blank">Ver proyecto →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proyecto-card" data-aos="fade-up" data-aos-delay="200">
+        <a class="proyecto-link" href="https://www.behance.net/gallery/212869167/Laberinto-Vino" target="_blank" rel="noopener noreferrer" aria-label="Laberinto Vino"></a>
+        <div class="proyecto-img">
+          <img src="images/laberinto-vino.jpg" alt="Laberinto Vino">
+          <div class="proyecto-overlay">
+            <div class="overlay-content">
+              <h3>Laberinto Vino</h3>
+              <a href="https://www.behance.net/gallery/212869167/Laberinto-Vino" target="_blank">Ver proyecto →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========== SECCIÓN CONTACTO / REDES ========== -->
+  <section id="contacto">
+    <div class="contacto-inner">
+
+      <div class="contacto-left" id="contacto-left" data-aos="fade-right" data-aos-delay="300">
+        <div class="slide activo"></div>
+        <div class="slide"></div>
+      </div>
+
+      <div class="contacto-right">
+        <p class="contacto-sub" data-aos="fade-up" data-aos-delay="300">¿Tienes un proyecto en mente?</p>
+        <h2 data-aos="fade-up" data-aos-delay="400">Hablemos <span>.</span></h2>
+        <p class="contacto-desc" data-aos="fade-up" data-aos-delay="500">Soy Gonzalo García, diseñador gráfico con más de ocho años creando contenido para empresas e influencers. Si tienes una idea, yo la hago realidad.</p>
+
+        <a class="contacto-email" data-aos="fade-up" data-aos-delay="600" href="mailto:themindsofgon@gmail.com">
+          <span>themindsofgon@gmail.com</span>
+        </a>
+
+        <div class="contacto-redes" data-aos="fade-up" data-aos-delay="700">
+          <a href="https://www.behance.net/themindsofgon" target="_blank" aria-label="Behance">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+              <path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988H0V5.021h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.221 8.061zM3 11h3.584c2.508 0 2.906-3-.312-3H3v3zm3.391 3H3v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/themindsofgon" target="_blank" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/themindsofgon" target="_blank" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="4"/>
+              <line x1="8" y1="11" x2="8" y2="17"/>
+              <line x1="8" y1="7" x2="8" y2="8"/>
+              <path d="M12 17v-4a2 2 0 0 1 4 0v4"/>
+              <line x1="12" y1="11" x2="12" y2="17"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <script>
+  const imagenes = [
+    'images/mural1.jpg',
+    'images/mural2.jpg',
+    'images/mural3.jpg',
+    'images/camiseta-yungblud.jpg',
+    'images/foofder.png',
+    'images/logobiografia.png',
+  ];
+  const slides = document.querySelectorAll('.contacto-left .slide');
+  let indice = 0, frente = 0;
+  slides[0].style.backgroundImage = `url('${imagenes[0]}')`;
+  slides[0].style.opacity = 1;
+  slides[0].style.zIndex = 2;
+  slides[1].style.opacity = 0;
+  slides[1].style.zIndex = 1;
+  function cambiarImagen() {
+    indice = (indice + 1) % imagenes.length;
+    const detras = frente === 0 ? 1 : 0;
+    slides[detras].style.transition = 'none';
+    slides[detras].style.opacity = 0;
+    slides[detras].style.backgroundImage = `url('${imagenes[indice]}')`;
+    slides[detras].style.zIndex = 2;
+    slides[frente].style.zIndex = 1;
+    requestAnimationFrame(() => { requestAnimationFrame(() => {
+      slides[detras].style.transition = 'opacity 1.6s cubic-bezier(0.45, 0, 0.2, 1)';
+      slides[detras].style.opacity = 1;
+    });});
+    frente = detras;
+  }
+  setInterval(cambiarImagen, 4500);
+  </script>
+
+
+  <!-- IR ARRIBA -->
+  <div id="button-up">
+    <i class="fas fa-chevron-up"></i>
+  </div>
+
+
+  <!-- FOOTER -->
+  <div class="footer-cloud-divider" aria-hidden="true">
+    <svg class="footer-wave-anim footer-wave-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2880 32" preserveAspectRatio="none" style="display:block;width:200%;height:32px;position:absolute;bottom:0;">
+      <path fill="rgba(255,255,255,0.3)" d="M0,0 L2880,0 L2880,5 C2520,5 2160,26 1440,26 C720,26 360,5 0,5 Z"/>
+    </svg>
+    <svg class="footer-wave-anim footer-wave-mid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2880 28" preserveAspectRatio="none" style="display:block;width:200%;height:28px;position:absolute;bottom:0;">
+      <path fill="rgba(255,255,255,0.18)" d="M0,0 L2880,0 L2880,3 C2610,3 2430,22 2160,22 C1890,22 1710,3 1440,3 C1170,3 990,22 720,22 C450,22 270,3 0,3 Z"/>
+    </svg>
+    <svg class="footer-wave-anim" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2880 25" preserveAspectRatio="none" style="display:block;width:200%;height:25px;position:relative;">
+      <path fill="#ffffff" d="M0,0 L2880,0 L2880,1 C2610,1 2430,18 2160,18 C1890,18 1710,1 1440,1 C1170,1 990,18 720,18 C450,18 270,1 0,1 Z"/>
+    </svg>
+  </div>
+  <footer>
+    <div class="footer-top">
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="logo" />
+        <a class="email" href="mailto:themindsofgon@gmail.com" title="Email">themindsofgon@gmail.com</a>
+      </div>
+      <span class="footer-tagline">De mis mentes para ti.</span>
+    </div>
+    <div class="footer-bottom">
+      <nav class="footer-nav">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc-epUMO3jboOy9vldnsQbRiyoDzdfkUXl-eQV1eD9g0gM0wQ/viewform" target="_blank">Trabaja conmigo</a>
+        <a href="https://www.behance.net/themindsofgon" target="_blank">Portafolio</a>
+      </nav>
+      <div class="footer-social">
         <a href="https://www.behance.net/themindsofgon" target="_blank" aria-label="Behance">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none">
             <path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988H0V5.021h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.221 8.061zM3 11h3.584c2.508 0 2.906-3-.312-3H3v3zm3.391 3H3v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"/>
           </svg>
         </a>
-        <a href="https://www.instagram.com/themindsofgon" target="_blank" aria-label="Instagram">
+        <a href="https://www.instagram.com/themindsofgon/" target="_blank" aria-label="Instagram">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
             <circle cx="12" cy="12" r="4"/>
             <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
           </svg>
         </a>
-        <a href="https://www.linkedin.com/in/themindsofgon" target="_blank" aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/in/themindsofgon/" target="_blank" aria-label="LinkedIn">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="2" width="20" height="20" rx="4"/>
             <line x1="8" y1="11" x2="8" y2="17"/>
@@ -212,136 +527,42 @@
         </a>
       </div>
     </div>
-
-  </div>
-</section>
+  </footer>
 
 
-<script>
-const imagenes = [
-  'images/minds1.jpg',
-  'images/minds2.jpg',
-  'images/minds3.jpg',
-  'images/minds5.jpg',
-  'images/minds6.jpg',
-  'images/minds7.jpg',
-];
-
-const slides = document.querySelectorAll('.contacto-left .slide');
-let indice = 0;
-let frente = 0;
-
-// Estado inicial: la primera imagen visible, la otra capa oculta debajo
-slides[0].style.backgroundImage = `url('${imagenes[0]}')`;
-slides[0].style.opacity = 1;
-slides[0].style.zIndex = 2;
-slides[1].style.opacity = 0;
-slides[1].style.zIndex = 1;
-
-function cambiarImagen() {
-  indice = (indice + 1) % imagenes.length;
-  const detras = frente === 0 ? 1 : 0;
-
-  // Preparamos la capa entrante: oculta, con la nueva imagen, por encima
-  slides[detras].style.transition = 'none';
-  slides[detras].style.opacity = 0;
-  slides[detras].style.backgroundImage = `url('${imagenes[indice]}')`;
-  slides[detras].style.zIndex = 2;
-  slides[frente].style.zIndex = 1; // la saliente queda opaca debajo
-
-  // Forzamos reflow y la fundimos por encima (la de debajo sigue opaca → sin parpadeo)
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      slides[detras].style.transition = 'opacity 1.6s cubic-bezier(0.45, 0, 0.2, 1)';
-      slides[detras].style.opacity = 1;
-    });
-  });
-
-  frente = detras;
-}
-
-setInterval(cambiarImagen, 4500);
-</script>
-
-    <!-- IR ARRIBA -->
-    <div id="button-up">
-        <i class="fas fa-chevron-up"></i>
-    </div>
-
-
-    
-    <!-- SECCTION FOOTER -->
-<div class="footer-cloud-divider" aria-hidden="true">
-  <svg class="footer-wave-anim footer-wave-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2880 32" preserveAspectRatio="none" style="display:block;width:200%;height:32px;position:absolute;bottom:0;">
-    <path fill="rgba(255,255,255,0.3)" d="M0,0 L2880,0 L2880,5 C2520,5 2160,26 1440,26 C720,26 360,5 0,5 Z"/>
-  </svg>
-  <svg class="footer-wave-anim footer-wave-mid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2880 28" preserveAspectRatio="none" style="display:block;width:200%;height:28px;position:absolute;bottom:0;">
-    <path fill="rgba(255,255,255,0.18)" d="M0,0 L2880,0 L2880,3 C2610,3 2430,22 2160,22 C1890,22 1710,3 1440,3 C1170,3 990,22 720,22 C450,22 270,3 0,3 Z"/>
-  </svg>
-  <svg class="footer-wave-anim" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2880 25" preserveAspectRatio="none" style="display:block;width:200%;height:25px;position:relative;">
-    <path fill="#ffffff" d="M0,0 L2880,0 L2880,1 C2610,1 2430,18 2160,18 C1890,18 1710,1 1440,1 C1170,1 990,18 720,18 C450,18 270,1 0,1 Z"/>
-  </svg>
-</div>
-<footer>
-  <div class="footer-top">
-    <div class="footer-logo">
-      <img src="images/logo.png" alt="logo" />
-      <a class="email" href="mailto:themindsofgon@gmail.com" title="Email">themindsofgon@gmail.com</a>
-    </div>
-    <span class="footer-tagline">De mis mentes para ti.</span>
+  <!-- ========== NUBES ANIMADAS — MARCO COMPLETO ========== -->
+  <div id="cloud-layer">
+    <!-- Borde superior (10) -->
+    <div class="cld c1"></div><div class="cld c2"></div><div class="cld c3"></div>
+    <div class="cld c4"></div><div class="cld c5"></div><div class="cld c6"></div>
+    <div class="cld c7"></div><div class="cld c8"></div><div class="cld c9"></div>
+    <div class="cld c10"></div>
+    <!-- Borde inferior (10) -->
+    <div class="cld c11"></div><div class="cld c12"></div><div class="cld c13"></div>
+    <div class="cld c14"></div><div class="cld c15"></div><div class="cld c16"></div>
+    <div class="cld c17"></div><div class="cld c18"></div><div class="cld c19"></div>
+    <div class="cld c20"></div>
+    <!-- Borde izquierdo (5) -->
+    <div class="cld c21"></div><div class="cld c22"></div><div class="cld c23"></div>
+    <div class="cld c24"></div><div class="cld c25"></div>
+    <!-- Borde derecho (5) -->
+    <div class="cld c26"></div><div class="cld c27"></div><div class="cld c28"></div>
+    <div class="cld c29"></div><div class="cld c30"></div>
   </div>
 
-  <div class="footer-bottom">
-    <nav class="footer-nav">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc-epUMO3jboOy9vldnsQbRiyoDzdfkUXl-eQV1eD9g0gM0wQ/viewform" target="_blank">Trabaja conmigo</a>
-      <a href="https://www.behance.net/themindsofgon" target="_blank">Portafolio</a>
-    </nav>
+  <!-- JS -->
+  <script src="js/irarriba.js"></script>
+  <script src="js/contactoscript.js"></script>
+  <script src="js/burguerbutton.js"></script>
+  <script src="script.js"></script>
+  <script src="js/rpg-landing.js"></script>
+  <script src="js/brains-bounce.js"></script>
+  <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <div class="footer-social">
-      <a href="https://www.behance.net/themindsofgon" target="_blank" aria-label="Behance">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none">
-          <path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988H0V5.021h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.221 8.061zM3 11h3.584c2.508 0 2.906-3-.312-3H3v3zm3.391 3H3v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"/>
-        </svg>
-      </a>
-      <a href="https://www.instagram.com/themindsofgon/" target="_blank" aria-label="Instagram">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-          <circle cx="12" cy="12" r="4"/>
-          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-        </svg>
-      </a>
-      <a href="https://www.linkedin.com/in/themindsofgon/" target="_blank" aria-label="LinkedIn">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="2" width="20" height="20" rx="4"/>
-          <line x1="8" y1="11" x2="8" y2="17"/>
-          <line x1="8" y1="7" x2="8" y2="8"/>
-          <path d="M12 17v-4a2 2 0 0 1 4 0v4"/>
-          <line x1="12" y1="11" x2="12" y2="17"/>
-        </svg>
-      </a>
-    </div>
-  </div>
+  <script>
+    AOS.init({ duration: 400, delay: 0, offset: 60, once: true });
+  </script>
 
-</footer>
-
-
-
-    <!-- JS -->
-    <script src="js/irarriba.js"></script>
-    <script src="js/contactoscript.js"></script>
-    <script src="js/burguerbutton.js"></script>
-    <script src="script.js"></script>
-    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  
-    <script>
-        AOS.init({
-          duration: 400,
-          delay: 0,
-          offset: 60,
-          once: true
-        });
-    </script>
- 
 </body>
 </html>

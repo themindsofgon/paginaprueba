@@ -1,0 +1,437 @@
+/* =============================================
+   RPG LANDING — TheMindsOfGon  ★ FLAT CARTOON
+   ============================================= */
+
+/* Paleta
+   --blue:   #3BBDE8   fondo principal
+   --yellow: #FFE500   acento / título
+   --pink:   #F72585   acento secundario
+   --cyan:   #4CC9F0   acento terciario
+   --dark:   #111111   bordes / sombras
+   --white:  #FFFFFF
+*/
+
+/* ---- Fondo base ---- */
+#rpg-landing {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: #3BBDE8;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+
+/* Cerebros rebotando estilo DVD */
+#brains-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+}
+.brain-ball {
+  position: absolute;
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  pointer-events: none;
+  will-change: left, top;
+  user-select: none;
+}
+
+/* Ocultar los rayos (no los necesitamos en cartoon) */
+#rpg-energy { display: none; }
+
+/* ---- Esquinas — versión cartoon (más gruesas, amarillo) ---- */
+.rpg-corner {
+  position: absolute;
+  width: 48px; height: 48px;
+  z-index: 12; pointer-events: none;
+}
+.rpg-corner-tl { top:20px; left:20px;   border-top:4px solid #FFE500; border-left:4px solid #FFE500; }
+.rpg-corner-tr { top:20px; right:20px;  border-top:4px solid #FFE500; border-right:4px solid #FFE500; }
+.rpg-corner-bl { bottom:20px; left:20px;  border-bottom:4px solid #FFE500; border-left:4px solid #FFE500; }
+.rpg-corner-br { bottom:20px; right:20px; border-bottom:4px solid #FFE500; border-right:4px solid #FFE500; }
+
+/* =============================
+   PANEL DERECHO — CEREBRO
+   ============================= */
+#rpg-character {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 54%;
+  z-index: 4;
+  overflow: hidden;
+}
+
+
+.rpg-char {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0;
+  padding: 28px 46px 28px 0;
+  filter: saturate(1.35) brightness(1.05) drop-shadow(4px 4px 0 rgba(0,0,0,0.25));
+  animation: char-cycle 32s infinite;
+  z-index: 1;
+}
+.ci1 { animation-delay:  0s; }
+.ci2 { animation-delay:  4s; }
+.ci3 { animation-delay:  8s; }
+.ci4 { animation-delay: 12s; }
+.ci5 { animation-delay: 16s; }
+.ci6 { animation-delay: 20s; }
+.ci7 { animation-delay: 24s; }
+.ci8 { animation-delay: 28s; }
+
+@keyframes char-cycle {
+  0%      { opacity:0; transform:scale(1.05) translateY(10px); }
+  5%      { opacity:1; transform:scale(1.01) translateY(2px);  }
+  11%     { opacity:1; transform:scale(1)    translateY(0);    }
+  12.5%   { opacity:0; transform:scale(0.96) translateY(-8px); }
+  100%    { opacity:0; transform:scale(1.05) translateY(10px); }
+}
+
+/* Fade del borde izquierdo del panel */
+#rpg-char-fade {
+  position: absolute;
+  top:0; bottom:0; left:0;
+  width: 45%;
+  background: linear-gradient(to right, #3BBDE8 0%, rgba(67,97,238,0.5) 55%, transparent 100%);
+  z-index: 5; pointer-events: none;
+}
+
+/* =============================
+   PANEL IZQUIERDO — TEXTO
+   ============================= */
+#rpg-left {
+  position: relative;
+  z-index: 8;
+  width: 46%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0 0 8vw;
+  gap: 30px;
+}
+
+/* ── Levitación suave del contenido izquierdo ── */
+@keyframes levitate {
+  0%,100% { transform: translateY(0px);   }
+  50%      { transform: translateY(-8px);  }
+}
+@keyframes levitate-slow {
+  0%,100% { transform: translateY(0px);   }
+  50%      { transform: translateY(-5px);  }
+}
+
+#rpg-title {
+  animation: levitate 4.5s ease-in-out infinite;
+}
+#rpg-title p {
+  animation: levitate 5.2s 0.6s ease-in-out infinite;
+}
+#rpg-menu {
+  animation: levitate-slow 6s 1.0s ease-in-out infinite;
+}
+
+/* Título — Fredoka One, amarillo, sombra negra (cartoon outline) */
+#rpg-title h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(36px, 5.8vw, 76px);
+  color: #d1286a;
+  margin: 0;
+  line-height: 1.0;
+  letter-spacing: 1px;
+  text-shadow:
+    3px  3px 0 #111,
+   -1px -1px 0 #111,
+    1px -1px 0 #111,
+   -1px  1px 0 #111;
+}
+
+/* Subtítulo — Pacifico, blanco */
+#rpg-title p {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(14px, 1.6vw, 21px);
+  color: rgba(255,255,255,0.85);
+  margin: 10px 0 0;
+  letter-spacing: 0.5px;
+}
+
+/* ---- Menú ---- */
+#rpg-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rpg-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(19px, 2vw, 26px);
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.80);
+  text-decoration: none;
+  padding: 9px 0;
+  transition: color 0.18s ease, transform 0.18s ease;
+  cursor: none;
+}
+.rpg-item:hover,
+.rpg-item.rpg-focused {
+  color: #FFE500;
+  transform: translateX(12px);
+}
+.rpg-arrow {
+  font-size: 0.5em;
+  color: #FFE500;
+  opacity: 0;
+  transition: opacity 0.18s, transform 0.18s;
+  transform: translateX(-6px);
+}
+.rpg-item:hover .rpg-arrow,
+.rpg-item.rpg-focused .rpg-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Hint */
+#rpg-hint {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(12px, 1.1vw, 15px);
+  color: rgba(255,255,255,0.28);
+  animation: rpg-blink 2.4s ease-in-out infinite;
+}
+@keyframes rpg-blink {
+  0%,100% { opacity: 0.2; }
+  50%     { opacity: 0.85; }
+}
+
+/* Tagline esquina inferior derecha */
+#rpg-tagline-br {
+  position: absolute;
+  bottom: 24px; right: 24px;
+  z-index: 12;
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(11px, 0.95vw, 14px);
+  color: rgba(255,255,255,0.30);
+  pointer-events: none;
+}
+
+/* ========================
+   TRANSICIÓN
+   ======================== */
+#rpg-flash {
+  position: fixed; inset: 0;
+  background: #FFE500;
+  opacity: 0; pointer-events: none;
+  z-index: 20000;
+  transition: opacity 0.12s ease;
+}
+#rpg-flash.on { opacity: 0.85; }
+
+#rpg-landing.rpg-exit {
+  animation: rpg-exit-anim 0.45s ease forwards;
+}
+@keyframes rpg-exit-anim {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* ========================
+   BOTÓN VOLVER
+   ======================== */
+#rpg-return-btn {
+  position: fixed; top:20px; left:20px;
+  z-index: 9998;
+  background: #FFE500;
+  border: 3px solid #111;
+  color: #111;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  cursor: none; display: none;
+  text-decoration: none;
+  box-shadow: 3px 3px 0 #111;
+  transition: all 0.15s ease;
+}
+#rpg-return-btn:hover {
+  background: #F72585;
+  color: #fff;
+  transform: translate(-2px,-2px);
+  box-shadow: 5px 5px 0 #111;
+}
+#rpg-return-btn.rpg-visible { display: block; }
+
+/* ========================
+   SECCIÓN SOBRE MÍ (legacy — oculta)
+   ======================== */
+#sobre-mi, #proyectos {
+  background: #f9f9f9;
+}
+#sobre-mi {
+  padding: 120px 95px 80px;
+  min-height: 100vh;
+  display: flex; align-items: center;
+}
+.sobre-mi-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+  max-width: 1200px; margin: 0 auto; width: 100%;
+}
+.sobre-mi-img-wrap { position: relative; display: flex; align-items: center; justify-content: center; }
+.sobre-mi-img-wrap img { width: 100%; max-width: 420px; border-radius: 4px; display: block; }
+.sobre-mi-img-wrap::before {
+  content: ''; position: absolute; top:18px; left:18px; right:-18px; bottom:-18px;
+  border: 2px solid #d1286a; border-radius: 4px; z-index:-1;
+}
+.sobre-mi-text { display:flex; flex-direction:column; gap:20px; }
+.sobre-mi-sub { font-size:11px; font-weight:700; letter-spacing:4px; text-transform:uppercase; color:#d1286a; margin:0; }
+.sobre-mi-text h2 {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(32px,4vw,58px); color:#111; margin:0;
+}
+.sobre-mi-text h2 span { color: #d1286a; }
+.sobre-mi-desc { font-size:16px; color:#555; line-height:1.75; max-width:460px; margin:0; }
+.sobre-mi-stats { display:flex; gap:40px; margin-top:8px; }
+.sobre-mi-stat strong { display:block; font-family:'Fredoka One',cursive; font-size:42px; color:#111; line-height:1; }
+.sobre-mi-stat strong span { color:#d1286a; }
+.sobre-mi-stat small { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#888; display:block; }
+
+/* ========================
+   NUBES ANIMADAS — MARCO TIPO CIELO
+   ======================== */
+.rpg-corner { display: none !important; }
+
+#cloud-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 19999;
+  overflow: hidden;
+}
+
+/* Forma base: cuerpo ancho + 3 bumps superpuestos */
+.cld {
+  position: absolute;
+  background: #fff;
+  border-radius: 999px;
+}
+
+/* Bump central grande */
+.cld::before {
+  content: '';
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  width: 60%;
+  height: 260%;
+  top: -115%;
+  left: 18%;
+}
+
+/* Bump lateral derecho */
+.cld::after {
+  content: '';
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  width: 44%;
+  height: 200%;
+  top: -88%;
+  right: 14%;
+}
+
+/* Bump lateral izquierdo vía box-shadow en ::before */
+
+/* ═══ BORDE SUPERIOR — 10 nubes grandes, superpuestas ═══ */
+.c1  { width:240px; height:70px; top:-40px; left:-2%;   animation:cf-ud 6.0s 0.0s ease-in-out infinite; }
+.c2  { width:200px; height:60px; top:-35px; left:13%;   animation:cf-ud 7.5s 1.1s ease-in-out infinite; }
+.c3  { width:260px; height:76px; top:-45px; left:25%;   animation:cf-ud 5.6s 1.7s ease-in-out infinite; }
+.c4  { width:210px; height:62px; top:-36px; left:40%;   animation:cf-ud 8.2s 0.5s ease-in-out infinite; }
+.c5  { width:250px; height:74px; top:-43px; left:52%;   animation:cf-ud 6.8s 2.2s ease-in-out infinite; }
+.c6  { width:195px; height:58px; top:-33px; left:66%;   animation:cf-ud 7.1s 0.8s ease-in-out infinite; }
+.c7  { width:255px; height:76px; top:-44px; left:76%;   animation:cf-ud 5.9s 2.0s ease-in-out infinite; }
+.c8  { width:215px; height:64px; top:-38px; left:87%;   animation:cf-ud 7.3s 1.4s ease-in-out infinite; }
+.c9  { width:200px; height:60px; top:-34px; left:5%;    animation:cf-ud 6.5s 3.0s ease-in-out infinite; }
+.c10 { width:230px; height:68px; top:-42px; right:-1%;  animation:cf-ud 5.2s 0.3s ease-in-out infinite; }
+
+/* ═══ BORDE INFERIOR — 10 nubes grandes, superpuestas ═══ */
+.c11 { width:245px; height:72px; bottom:-42px; left:-2%;  animation:cf-du 6.6s 0.4s ease-in-out infinite; }
+.c12 { width:205px; height:62px; bottom:-36px; left:12%;  animation:cf-du 8.0s 1.6s ease-in-out infinite; }
+.c13 { width:262px; height:78px; bottom:-46px; left:24%;  animation:cf-du 5.7s 0.9s ease-in-out infinite; }
+.c14 { width:212px; height:63px; bottom:-37px; left:39%;  animation:cf-du 8.3s 2.4s ease-in-out infinite; }
+.c15 { width:248px; height:73px; bottom:-43px; left:51%;  animation:cf-du 6.2s 1.8s ease-in-out infinite; }
+.c16 { width:198px; height:59px; bottom:-34px; left:65%;  animation:cf-du 7.4s 0.6s ease-in-out infinite; }
+.c17 { width:258px; height:77px; bottom:-45px; left:75%;  animation:cf-du 5.8s 2.8s ease-in-out infinite; }
+.c18 { width:218px; height:65px; bottom:-39px; left:86%;  animation:cf-du 7.0s 1.3s ease-in-out infinite; }
+.c19 { width:202px; height:61px; bottom:-35px; left:6%;   animation:cf-du 6.4s 3.2s ease-in-out infinite; }
+.c20 { width:235px; height:70px; bottom:-41px; right:-1%; animation:cf-du 6.1s 2.0s ease-in-out infinite; }
+
+/* ═══ BORDE IZQUIERDO — 5 nubes, apaisadas peeking desde la izq. ═══ */
+.c21 { width:220px; height:68px; top:3%;  left:-140px; animation:cf-lr 7.2s 0.7s ease-in-out infinite; }
+.c22 { width:200px; height:62px; top:20%; left:-126px; animation:cf-lr 8.8s 2.0s ease-in-out infinite; }
+.c23 { width:230px; height:70px; top:38%; left:-145px; animation:cf-lr 6.5s 0.4s ease-in-out infinite; }
+.c24 { width:210px; height:65px; top:57%; left:-132px; animation:cf-lr 7.8s 2.6s ease-in-out infinite; }
+.c25 { width:225px; height:68px; top:74%; left:-140px; animation:cf-lr 8.3s 1.2s ease-in-out infinite; }
+
+/* ═══ BORDE DERECHO — 5 nubes ═══ */
+.c26 { width:220px; height:68px; top:9%;  right:-140px; animation:cf-rl 7.0s 1.4s ease-in-out infinite; }
+.c27 { width:205px; height:63px; top:27%; right:-128px; animation:cf-rl 7.7s 0.6s ease-in-out infinite; }
+.c28 { width:232px; height:71px; top:45%; right:-147px; animation:cf-rl 6.0s 2.2s ease-in-out infinite; }
+.c29 { width:208px; height:64px; top:63%; right:-130px; animation:cf-rl 8.4s 1.8s ease-in-out infinite; }
+.c30 { width:222px; height:67px; top:80%; right:-139px; animation:cf-rl 7.4s 1.0s ease-in-out infinite; }
+
+/* ═══ ANIMACIONES ═══ */
+@keyframes cf-ud { 0%,100%{transform:translateY(0)}  50%{transform:translateY(14px)}  }
+@keyframes cf-du { 0%,100%{transform:translateY(0)}  50%{transform:translateY(-14px)} }
+@keyframes cf-lr { 0%,100%{transform:translateX(0)}  50%{transform:translateX(16px)}  }
+@keyframes cf-rl { 0%,100%{transform:translateX(0)}  50%{transform:translateX(-16px)} }
+
+/* ========================
+   RESPONSIVE
+   ======================== */
+@media (max-width: 900px) {
+  #rpg-left {
+    width: 100%;
+    padding: 0 6vw;
+    z-index: 20;
+  }
+
+  /* Nubes laterales: empujarlas fuera para que no tapen el texto */
+  .c21,.c22,.c23,.c24,.c25 { left: -180px !important; }
+  .c26,.c27,.c28,.c29,.c30 { right: -180px !important; }
+
+  /* Nubes de borde superior e inferior: más pequeñas */
+  .c1,.c2,.c3,.c4,.c5,.c6,.c7,.c8,.c9,.c10 {
+    transform: scale(0.65);
+    transform-origin: top center;
+  }
+  .c11,.c12,.c13,.c14,.c15,.c16,.c17,.c18,.c19,.c20 {
+    transform: scale(0.65);
+    transform-origin: bottom center;
+  }
+}
+
+@media (max-width: 600px) {
+  #rpg-title h1 { font-size: clamp(30px, 9.5vw, 50px); }
+  .c2,.c4,.c6,.c8,.c10,.c12,.c14,.c16,.c18,.c20 { display: none; }
+  /* Laterales: ocultar todas menos una por lado */
+  .c22,.c23,.c24,.c25 { display: none; }
+  .c27,.c28,.c29,.c30 { display: none; }
+  /* Asomar ~70px de nube por cada lado */
+  .c21 { left: -150px !important; width: 200px !important; height: 62px !important; top: 68% !important; }
+  .c26 { right: -150px !important; width: 200px !important; height: 62px !important; top: 78% !important; }
+}
