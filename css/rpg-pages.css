@@ -263,29 +263,50 @@
 }
 .dark-project-card:hover .card-img { transform: scale(1.06); }
 
+/* Info oculta — se muestra como overlay al hover */
 .dark-project-info {
-  padding: 14px 16px 16px;
-  background: #fff;
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  padding: 20px;
 }
+.dark-project-card:hover .dark-project-info { opacity: 1; }
+
 .dark-project-info h3 {
   font-family: 'Fredoka One', cursive;
-  font-size: 18px;
-  color: #111;
-  margin: 0 0 6px;
+  font-size: 22px;
+  color: #FFE500;
+  margin: 0;
+  text-align: center;
+  text-shadow: 2px 2px 0 #111;
   letter-spacing: 0.5px;
 }
 .dark-project-info a {
   font-family: 'Nunito', sans-serif;
-  font-weight: 800;
+  font-weight: 900;
   font-size: 11px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #3BBDE8;
+  color: #fff;
   text-decoration: none;
-  transition: color 0.15s;
+  background: #F72585;
+  border: 2px solid #111;
+  padding: 6px 16px;
+  box-shadow: 3px 3px 0 #111;
+  transition: all 0.15s;
   cursor: none;
 }
-.dark-project-card:hover .dark-project-info a { color: #F72585; }
+.dark-project-card:hover .dark-project-info a:hover {
+  background: #FFE500;
+  color: #111;
+}
 
 /* ============================
    PÁGINA — MIS REDES
