@@ -6,61 +6,71 @@
   var modalTitle = document.getElementById('modal-title');
   var modalBtn   = document.getElementById('modal-btn');
 
-  /* ── Extraer imágenes del HTML de Behance ── */
+  var PROXIES = [
+    function(u){ return 'https://corsproxy.io/?' + encodeURIComponent(u); },
+    function(u){ return 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u); },
+    function(u){ return 'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(u); },
+  ];
+
   function extractImages(html) {
     var images = [];
+    var seen   = {};
 
-    // 1. Intentar desde __NEXT_DATA__ JSON embebido
-    var match = html.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/);
-    if (match) {
-      try {
-        var data    = JSON.parse(match[1]);
-        var jsonStr = JSON.stringify(data);
-        // Extraer URLs de imágenes del CDN de Behance
-        var urls = jsonStr.match(/https?:\\?\/\\?\/[^"\\]*(?:behance\.net|akamaihd\.net|mir-s0-img)[^"\\]*\.(?:jpg|jpeg|png|webp)/gi);
-        if (urls) {
-          urls = urls.map(function (u) { return u.replace(/\\u002F/g, '/').replace(/\\/g, ''); });
-          // Filtrar avatares, iconos, thumbs y deduplicar
-          var seen = {};
-          urls.forEach(function (u) {
-            if (!seen[u] && !/avatar|profile|icon|favicon|thumb|_sq|_50|_100|_115|_230/i.test(u)) {
-              seen[u] = true;
-              images.push(u);
-            }
-          });
-        }
-      } catch (e) {}
+    // Buscar todas las URLs de imagen de CDN de Behance en el HTML/JSON
+    var re = /https?:\/\/[^\s"'<>\\]*(?:mir-s0-img\.behance\.net|behance\.net\/gallery\/module|akamai)[^\s"'<>\\]*\.(?:jpg|jpeg|png|webp)/gi;
+    var m;
+    while ((m = re.exec(html)) !== null) {
+      var u = m[0].replace(/\\u002F/g,'/').replace(/\\/g,'');
+      if (!seen[u] && !/avatar|profile|icon|favicon|_sq\b|_50\b|_100\b|_115\b|_230\b/i.test(u)) {
+        seen[u] = true;
+        images.push(u);
+      }
     }
 
-    // 2. Fallback: buscar todas las <img> con src de Behance CDN
+    // Segunda pasada: URLs genéricas de imágenes dentro del JSON de Next.js
     if (images.length === 0) {
-      var srcMatches = html.match(/https?:\/\/[^"'\s]*(?:behance\.net|akamaihd\.net|mir-s0)[^"'\s]*\.(?:jpg|jpeg|png|webp)/gi);
-      if (srcMatches) {
-        var seen2 = {};
-        srcMatches.forEach(function (u) {
-          if (!seen2[u] && !/avatar|profile|icon|_sq|_50|_100/i.test(u)) {
-            seen2[u] = true;
-            images.push(u);
-          }
-        });
+      var re2 = /https?:\\?\/\\?\/[^"\\]*\.(?:jpg|jpeg|png|webp)[^"\\]*/gi;
+      while ((m = re2.exec(html)) !== null) {
+        var u2 = m[0].replace(/\\u002F/g,'/').replace(/\\\/\//g,'//').replace(/\\/g,'');
+        if (!seen[u2] && /behance|akamai/i.test(u2) &&
+            !/avatar|profile|icon|_sq|_50\b|_100\b/i.test(u2)) {
+          seen[u2] = true;
+          images.push(u2);
+        }
       }
     }
 
     return images;
   }
 
-  function showLoading() {
-    gallery.innerHTML = '<div class="modal-loading">Cargando proyecto…</div>';
+  function tryFetch(url, proxies, index) {
+    if (index >= proxies.length) return Promise.reject('all failed');
+    return fetch(proxies[index](url), { signal: AbortSignal.timeout(8000) })
+      .then(function(r){
+        if (!r.ok) throw new Error('bad response');
+        return r.text();
+      })
+      .catch(function(){
+        return tryFetch(url, proxies, index + 1);
+      });
   }
 
-  function showError(imgSrc) {
-    gallery.innerHTML = '<img src="' + imgSrc + '" style="width:100%;display:block;" alt="">';
+  function showLoading() {
+    gallery.innerHTML = '<div class="modal-loading"><span class="modal-spinner"></span>Cargando proyecto…</div>';
+  }
+
+  function showFallback(imgSrc, projectUrl) {
+    gallery.innerHTML =
+      '<div class="modal-fallback-wrap">' +
+        '<img src="' + imgSrc + '" alt="">' +
+        '<p>No se pudo cargar el proyecto completo.<br>Visítalo directamente en Behance.</p>' +
+      '</div>';
   }
 
   function renderImages(images) {
     if (!images || images.length === 0) return false;
-    gallery.innerHTML = images.map(function (src) {
-      return '<img src="' + src + '" alt="" loading="lazy">';
+    gallery.innerHTML = images.map(function(src){
+      return '<img src="' + src + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">';
     }).join('');
     return true;
   }
@@ -77,15 +87,12 @@
     document.body.style.overflow = 'hidden';
     gallery.scrollTop = 0;
 
-    // Obtener página de Behance via proxy CORS
-    var proxy = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url);
-    fetch(proxy)
-      .then(function (r) { return r.text(); })
-      .then(function (html) {
+    tryFetch(url, PROXIES, 0)
+      .then(function(html){
         var images = extractImages(html);
-        if (!renderImages(images)) showError(img);
+        if (!renderImages(images)) showFallback(img, url);
       })
-      .catch(function () { showError(img); });
+      .catch(function(){ showFallback(img, url); });
   }
 
   function closeModal() {
@@ -94,13 +101,13 @@
     document.body.style.overflow = '';
   }
 
-  document.querySelectorAll('.dark-project-card').forEach(function (card) {
-    card.addEventListener('click', function () { openModal(card); });
+  document.querySelectorAll('.dark-project-card').forEach(function(card){
+    card.addEventListener('click', function(){ openModal(card); });
   });
 
   backdrop.addEventListener('click', closeModal);
   closeBtn.addEventListener('click',  closeModal);
-  document.addEventListener('keydown', function (e) {
+  document.addEventListener('keydown', function(e){
     if (e.key === 'Escape') closeModal();
   });
 })();
